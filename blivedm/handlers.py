@@ -13,6 +13,8 @@ __all__ = (
 logger = logging.getLogger('blivedm')
 
 logged_unknown_cmds = {
+    'PLAYTOGETHER_ICON_CHANGE', # command={'cmd': 'PLAYTOGETHER_ICON_CHANGE', 'data': {'area_id': 236, 'has_perm': 0, 'show_count': 0}}
+    'AREA_RANK_CHANGED', # command={'cmd': 'AREA_RANK_CHANGED', 'data': {'conf_id': 21, 'rank_name': '单机航海', 'uid': 412847209, 'rank': 0, 'icon_url_blue': 'https://i0.hdslb.com/bfs/live/18e2990a546d33368200f9058f3d9dbc4038eb5c.png', 'icon_url_pink': 'https://i0.hdslb.com/bfs/live/a6c490c36e88c7b191a04883a5ec15aed187a8f7.png', 'icon_url_grey': 'https://i0.hdslb.com/bfs/live/cb7444b1faf1d785df6265bfdc1fcfc993419b76.png', 'action_type': 1, 'timestamp': 1706182633, 'msg_id': 'f639198e-80f1-4bf1-bc43-866efcfb711a', 'jump_url_link': 'https://live.bilibili.com/p/html/live-app-hotrank/index.html?clientType=3&ruid=412847209&conf_id=21&is_live_half_webview=1&hybrid_rotate_d=1&is_cling_player=1&hybrid_half_ui=1,3,100p,70p,f4eefa,0,30,100,0,0;2,2,375,100p,f4eefa,0,30,100,0,0;3,3,100p,70p,f4eefa,0,30,100,0,0;4,2,375,100p,f4eefa,0,30,100,0,0;5,3,100p,70p,f4eefa,0,30,100,0,0;6,3,100p,70p,f4eefa,0,30,100,0,0;7,3,100p,70p,f4eefa,0,30,100,0,0;8,3,100p,70p,f4eefa,0,30,100,0,0#/area-rank', 'jump_url_pc': 'https://live.bilibili.com/p/html/live-app-hotrank/index.html?clientType=4&ruid=412847209&conf_id=21&pc_ui=338,465,f4eefa,0#/area-rank', 'jump_url_pink': 'https://live.bilibili.com/p/html/live-app-hotrank/index.html?clientType=1&ruid=412847209&conf_id=21&is_live_half_webview=1&hybrid_rotate_d=1&hybrid_half_ui=1,3,100p,70p,ffffff,0,30,100,12,0;2,2,375,100p,ffffff,0,30,100,0,0;3,3,100p,70p,ffffff,0,30,100,12,0;4,2,375,100p,ffffff,0,30,100,0,0;5,3,100p,70p,ffffff,0,30,100,0,0;6,3,100p,70p,ffffff,0,30,100,0,0;7,3,100p,70p,ffffff,0,30,100,0,0;8,3,100p,70p,ffffff,0,30,100,0,0#/area-rank', 'jump_url_web': 'https://live.bilibili.com/p/html/live-app-hotrank/index.html?clientType=2&ruid=412847209&conf_id=21#/area-rank'}}
     'ANCHOR_HELPER_DANMU', # 直播小助手 command={'cmd': 'ANCHOR_HELPER_DANMU', 'data': {'sender': '直播小助手', 'msg': '开播获得100个弹幕！邀请观众连麦互动，直播间氛围更活跃哦', 'platform': 1, 'button_platform': 3, 'button_name': '去连麦', 'button_target': 'bililive://blink/open_voicelink', 'button_label': 0, 'report_type': 'milestone', 'report': 'session_danmu:6:100'}}
     'ANCHOR_BROADCAST', # 直播小助手 command={'cmd': 'ANCHOR_BROADCAST', 'data': {'sender': '直播小助手', 'msg': '开播获得100个弹幕！邀请观众连麦互动，直播间氛围更活跃哦', 'platform': 1, 'button_info': {'button_name': '去连麦', 'blink_button_type': '', 'blink_button_target': '', 'blink_button_extra': '', 'blink_button_label': 0, 'hime_button_type': 'panel', 'hime_button_target': '1000', 'hime_button_extra': '', 'hime_button_h5_type': '0', 'hime_button_label': 0}, 'milestone_type': 'session_danmu', 'milestone_value': 100, 'milestone_index': 6}}
     'COMBO_SEND',
@@ -20,8 +22,8 @@ logged_unknown_cmds = {
     # 'COMMON_NOTICE_DANMAKU', # 特殊通知弹幕 command={'cmd': 'COMMON_NOTICE_DANMAKU', 'data': {'terminals': [4, 5], 'content_segments': [{'type': 1, 'font_color': '#61666d', 'font_color_dark': '#a2a7ae', 'text': '恭喜 <%thuGreth%> 成为 <%小花花%> 星球守护者~', 'highlight_font_color': '#FFB027', 'highlight_font_color_dark': '#FFB027'}]}}
     'WATCHED_CHANGE', # 本次直播观众数量改变触发 command={'cmd': 'WATCHED_CHANGE', 'data': {'num': 14, 'text_small': '14', 'text_large': '14人看过'}}
     'ENTRY_EFFECT',
-    'HOT_RANK_CHANGED',
-    'HOT_RANK_CHANGED_V2',
+    # 'HOT_RANK_CHANGED',
+    # 'HOT_RANK_CHANGED_V2',
     # 'INTERACT_WORD', # 进入直播间 command={'cmd': 'INTERACT_WORD', 'data': {'contribution': {'grade': 3}, 'contribution_v2': {'grade': 2, 'rank_type': 'monthly_rank', 'text': '月榜前3用户'}, 'core_user_type': 0, 'dmscore': 28, 'fans_medal': {'anchor_roomid': 0, 'guard_level': 0, 'icon_id': 0, 'is_lighted': 0, 'medal_color': 0, 'medal_color_border': 0, 'medal_color_end': 0, 'medal_color_start': 0, 'medal_level': 0, 'medal_name': '', 'score': 0, 'special': '', 'target_id': 0}, 'group_medal': None, 'identities': [1], 'is_mystery': False, 'is_spread': 0, 'msg_type': 1, 'privilege_type': 0, 'roomid': 30886597, 'score': 1706174295693, 'spread_desc': '', 'spread_info': '', 'tail_icon': 0, 'tail_text': '', 'timestamp': 1706174295, 'trigger_time': 1706174294633680000, 'uid': 90383004, 'uinfo': {'base': {'face': 'https://i0.hdslb.com/bfs/face/a3720664af7a993fc45ce48f190d02913d1f2c85.jpg', 'is_mystery': False, 'name': '月上小狗', 'name_color': 0, 'official_info': {'desc': '', 'role': 0, 'title': '', 'type': -1}, 'origin_info': {'face': 'https://i0.hdslb.com/bfs/face/a3720664af7a993fc45ce48f190d02913d1f2c85.jpg', 'name': '月上小狗'}, 'risk_ctrl_info': {'face': 'https://i0.hdslb.com/bfs/face/a3720664af7a993fc45ce48f190d02913d1f2c85.jpg', 'name': '月上小狗'}}, 'guard': None, 'guard_leader': None, 'medal': None, 'title': None, 'uhead_frame': None, 'uid': 90383004, 'wealth': None}, 'uname': '月上小狗', 'uname_color': ''}}
     'LIVE',
     'LIVE_INTERACTIVE_GAME',
@@ -29,24 +31,24 @@ logged_unknown_cmds = {
     'ONLINE_RANK_COUNT',
     'ONLINE_RANK_TOP3',
     'ONLINE_RANK_V2',
-    'PK_BATTLE_END',
-    'PK_BATTLE_FINAL_PROCESS',
-    'PK_BATTLE_PROCESS',
-    'PK_BATTLE_PROCESS_NEW',
-    'PK_BATTLE_SETTLE',
-    'PK_BATTLE_SETTLE_USER',
-    'PK_BATTLE_SETTLE_V2',
+    # 'PK_BATTLE_END',
+    # 'PK_BATTLE_FINAL_PROCESS',
+    # 'PK_BATTLE_PROCESS',
+    # 'PK_BATTLE_PROCESS_NEW',
+    # 'PK_BATTLE_SETTLE',
+    # 'PK_BATTLE_SETTLE_USER',
+    # 'PK_BATTLE_SETTLE_V2',
     'PREPARING',
     'ROOM_REAL_TIME_MESSAGE_UPDATE',
     'STOP_LIVE_ROOM_LIST',
     'SUPER_CHAT_MESSAGE_JPN',
     'WIDGET_BANNER',
-    'ROOM_CHANGE', # 关闭直播？ command={'cmd': 'ROOM_CHANGE', 'data': {'title': '裸辞直播：今天研究一下B站弹幕姬', 'area_id': 372, 'parent_area_id': 11, 'area_name': '校园学习', 'parent_area_name': '知识', 'live_key': '0', 'sub_session_key': ''}}
-    'TRADING_SCORE', # command={'cmd': 'TRADING_SCORE', 'data': {'bubble_show_time': 3, 'num': 2, 'score_id': 3, 'uid': 412847209, 'update_time': 1706173741, 'update_type': 1}}
-    'SPREAD_ORDER_START', # command={'cmd': 'SPREAD_ORDER_START', 'data': {'order_id': 5862464, 'order_status': 1, 'roomid': 30886597, 'timestamp': 1706173750, 'uid': 412847209}}
-    'SPREAD_ORDER_OVER', # command={'cmd': 'SPREAD_ORDER_OVER', 'data': {'order_id': 5862464, 'order_status': 0, 'timestamp': 1706175599, 'uid': 412847209}}
-    'SPREAD_SHOW_FEET', # 修改直播组件事件触发 command={'cmd': 'SPREAD_SHOW_FEET', 'data': {'click': 0, 'coin_cost': 0, 'coin_num': 5, 'order_id': 5862464, 'plan_percent': 0, 'show': 1, 'timestamp': 1706173762, 'title': '流量包推广', 'total_online': 0, 'uid': 412847209}}
-    'SPREAD_SHOW_FEET_V2', # command={'cmd': 'SPREAD_SHOW_FEET_V2', 'data': {'click': 0, 'coin_cost': 0, 'coin_num': 5, 'cover_btn': '', 'cover_url': '', 'live_key': '459756646836947653', 'order_id': 5862464, 'order_type': 3, 'plan_percent': 0, 'show': 1, 'status': 1, 'timestamp': 1706173762, 'title': '流量包推广', 'total_online': 0, 'uid': 412847209}}
+    # 'ROOM_CHANGE', # 关闭直播？ command={'cmd': 'ROOM_CHANGE', 'data': {'title': '裸辞直播：今天研究一下B站弹幕姬', 'area_id': 372, 'parent_area_id': 11, 'area_name': '校园学习', 'parent_area_name': '知识', 'live_key': '0', 'sub_session_key': ''}}
+    # 'TRADING_SCORE', # command={'cmd': 'TRADING_SCORE', 'data': {'bubble_show_time': 3, 'num': 2, 'score_id': 3, 'uid': 412847209, 'update_time': 1706173741, 'update_type': 1}}
+    # 'SPREAD_ORDER_START', # command={'cmd': 'SPREAD_ORDER_START', 'data': {'order_id': 5862464, 'order_status': 1, 'roomid': 30886597, 'timestamp': 1706173750, 'uid': 412847209}}
+    # 'SPREAD_ORDER_OVER', # command={'cmd': 'SPREAD_ORDER_OVER', 'data': {'order_id': 5862464, 'order_status': 0, 'timestamp': 1706175599, 'uid': 412847209}}
+    # 'SPREAD_SHOW_FEET', # 修改直播组件事件触发 command={'cmd': 'SPREAD_SHOW_FEET', 'data': {'click': 0, 'coin_cost': 0, 'coin_num': 5, 'order_id': 5862464, 'plan_percent': 0, 'show': 1, 'timestamp': 1706173762, 'title': '流量包推广', 'total_online': 0, 'uid': 412847209}}
+    # 'SPREAD_SHOW_FEET_V2', # command={'cmd': 'SPREAD_SHOW_FEET_V2', 'data': {'click': 0, 'coin_cost': 0, 'coin_num': 5, 'cover_btn': '', 'cover_url': '', 'live_key': '459756646836947653', 'order_id': 5862464, 'order_type': 3, 'plan_percent': 0, 'show': 1, 'status': 1, 'timestamp': 1706173762, 'title': '流量包推广', 'total_online': 0, 'uid': 412847209}}
 }
 """已打日志的未知cmd"""
 
@@ -96,7 +98,7 @@ class BaseHandler(HandlerInterface):
         # 有人送礼
         'SEND_GIFT': _make_msg_callback('_on_gift', web_models.GiftMessage),
         # 特殊弹幕通知
-        'COMMON_NOTICE_DANMAKU': _make_msg_callback('_on_spacial_danmaku', web_models.SpacialDanMaku),
+        # 'COMMON_NOTICE_DANMAKU': _make_msg_callback('_on_spacial_danmaku', web_models.SpacialDanMaku),
         # 进入直播间
         'INTERACT_WORD': _make_msg_callback('_on_inter', web_models.UserInData),
         # 有人上舰
