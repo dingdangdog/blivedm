@@ -1,27 +1,38 @@
-from azure.cognitiveservices.speech import SpeechConfig, SpeechSynthesizer, ResultReason
-import os
+from azure.cognitiveservices.speech import SpeechConfig, SpeechSynthesizer
+
+from readConfig import read_json_config
+
+SECRET_KEY: str = ''
+MODEL: str = 'zh-CN-XiaoxiaoNeural'
+REGION: str = ''
+ENDPOINT: str = ''
+
+SPEECH_CONFIG: SpeechConfig = None
+SYNTHESIZER: SpeechSynthesizer = None
 
 
-# 指定声音模型，例如 "en-US-GuyNeural" 为英语男声模型
-voice_model = "zh-CN-YunzeNeural"
+def init_azure_config():
+    global MODEL
+    global SECRET_KEY
+    global REGION
+    global ENDPOINT
+    config = read_json_config()
+    SECRET_KEY = config['azure_key']
+    MODEL = config['azure_model']
+    REGION = config['azure_region']
+    ENDPOINT = config['azure_endpoint']
 
-# 替换成你的 Azure 订阅密钥和终结点
-subscription_key = "ad46a4efab11412e8db6bcf10dd79d69"
-region = "japanwest"
+    global SPEECH_CONFIG
+    global SYNTHESIZER
+    # SpeechConfig
+    SPEECH_CONFIG = SpeechConfig(subscription=SECRET_KEY, region=REGION)
+    SPEECH_CONFIG.speech_synthesis_voice_name = MODEL
+    # SpeechSynthesizer
+    SYNTHESIZER = SpeechSynthesizer(speech_config=SPEECH_CONFIG)
 
-# 替换成你的 Text-to-Speech 资源的终结点
-endpoint = "https://japanwest.api.cognitive.microsoft.com/"
-
-# 设置 SpeechConfig
-speech_config = SpeechConfig(subscription=subscription_key, region=region)
-speech_config.speech_synthesis_voice_name = voice_model
-
-# 创建 SpeechSynthesizer
-synthesizer = SpeechSynthesizer(speech_config=speech_config)
 
 def azure_tts_speech(text):
-    # 开始文本到语音转换
-    result = synthesizer.speak_text(text)
+    SYNTHESIZER.speak_text(text)
 
     # 检查转换是否成功
     # if result.reason == ResultReason.SynthesizingAudioCompleted:
@@ -38,6 +49,7 @@ def azure_tts_speech(text):
     #     os.system("start " + audio_file_path)
     # else:
     #     print("Speech synthesis failed: {}".format(result.reason))
+
 
 if __name__ == '__main__':
     azure_tts_speech("你好，azure！")

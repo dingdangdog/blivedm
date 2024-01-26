@@ -3,9 +3,14 @@
 Fork Form：[blivedm](https://github.com/xfgryujk/blivedm)
 
 ## package
+
+- need: `pip install pyinstaller`
+
 ```shell
-# pip install pyinstaller
-pyinstaller --onefile blivemd-voice.py
+# pyinstaller --onefile blivemd-voice.py
+
+# windows azure
+pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd-voice.py
 ```
 
 ## config

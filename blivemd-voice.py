@@ -3,33 +3,48 @@ import asyncio
 import http.cookies
 import random
 from typing import *
-from pyttsx3Speech import text_to_speech
-from azure_tts import azure_tts_speech
-
 import aiohttp
 
 import blivedm
 import blivedm.models.web as web_models
 from readConfig import read_json_config
+from pyttsx3Speech import text_to_speech
+from azure_tts import azure_tts_speech, init_azure_config
 
 # 直播间ID的取值看直播间URL
-TEST_ROOM_IDS = []
-
-SESSDATA = ''
-
 session: Optional[aiohttp.ClientSession] = None
 
+PLATFORM: str = 'win'
+MODE: str = 'local'
+ROOM_IDS: [] = []
+SESSDATA: str = ''
+HEART_PRINT: int = 10
+
+
 async def main():
-    init_session()
     init_config()
+    init_session()
     try:
         await run_single_client()
         await run_multi_clients()
     finally:
         await session.close()
 
+
 def init_config():
+    global PLATFORM
+    global MODE
+    global ROOM_IDS
+    global SESSDATA
+    global HEART_PRINT
     config = read_json_config()
+    PLATFORM = config['platform']
+    MODE = config['mode']
+    ROOM_IDS = config['room_ids']
+    SESSDATA = config['bilibili_SESSION']
+    HEART_PRINT = config['bilibili_heart_print']
+    init_azure_config()
+
 
 def init_session():
     cookies = http.cookies.SimpleCookie()
@@ -43,9 +58,9 @@ def init_session():
 
 async def run_single_client():
     """
-    演示监听一个直播间
+    监听一个直播间
     """
-    room_id = random.choice(TEST_ROOM_IDS)
+    room_id = random.choice(ROOM_IDS)
     client = blivedm.BLiveClient(room_id, session=session)
     handler = MyHandler()
     client.set_handler(handler)
@@ -63,9 +78,9 @@ async def run_single_client():
 
 async def run_multi_clients():
     """
-    演示同时监听多个直播间
+    同时监听多个直播间
     """
-    clients = [blivedm.BLiveClient(room_id, session=session) for room_id in TEST_ROOM_IDS]
+    clients = [blivedm.BLiveClient(room_id, session=session) for room_id in ROOM_IDS]
     handler = MyHandler()
     for client in clients:
         client.set_handler(handler)
@@ -81,15 +96,15 @@ async def run_multi_clients():
         ))
 
 
-class MyHandler(blivedm.BaseHandler):    # 类变量，将被所有类的实例共享
+class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共享
 
     # 心跳监听
     def __init__(self):
-        self.heart = 50
+        self.heart = HEART_PRINT
 
     def _on_heartbeat(self, client: blivedm.BLiveClient, message: web_models.HeartbeatMessage):
-        if self.heart == 50:
-            print(f'[{client.room_id}] 心跳')
+        if self.heart == HEART_PRINT:
+            print(f'[{client.room_id}] 自动心跳检测')
             self.heart = 0
         else:
             self.heart += 1
@@ -97,7 +112,7 @@ class MyHandler(blivedm.BaseHandler):    # 类变量，将被所有类的实例�
     # 进入直播间
     def _on_inter(self, client: blivedm.BLiveClient, data: web_models.UserInData):
         print(f'[{client.room_id}] {data.uname} 进入直播间了')
-        azure_tts_speech(f'欢迎 {data.uname} 进入直播间，老板常来玩啊！')
+        speech(f'欢迎 {data.uname} 进入直播间，老板常来玩啊！')
 
     # 弹幕消息
     def _on_danmaku(self, client: blivedm.BLiveClient, message: web_models.DanmakuMessage):
@@ -108,36 +123,34 @@ class MyHandler(blivedm.BaseHandler):    # 类变量，将被所有类的实例�
         except (ValueError, TypeError):
             msg = msg
         finally:
-            azure_tts_speech(f'{message.uname} 说：{msg}')
-
+            speech(f'{message.uname} 说：{msg}')
 
     # 特殊弹幕通知
     def _on_spacial_danmaku(self, client: blivedm.BLiveClient, message: web_models.SpacialDanMaku):
         # 使用 for 循环输出 content_segments 中的 text 属性
         for content in message.content_segments:
             print(f'[{content.text}')
-            azure_tts_speech(f'{content.text}')
+            speech(f'{content.text}')
 
     # 礼物信息
     def _on_gift(self, client: blivedm.BLiveClient, message: web_models.GiftMessage):
         print(f'[{client.room_id}] {message.uname} 赠送{message.gift_name}x{message.num}'
               f' （{message.coin_type}瓜子x{message.total_coin}）')
-        azure_tts_speech(f'感谢 {message.uname} 赠送的 {message.num}个 {message.gift_name}，谢谢老板，老板大气！')
+        speech(f'感谢 {message.uname} 赠送的 {message.num}个 {message.gift_name}，谢谢老板，老板大气！')
 
     # 舰长？
     def _on_buy_guard(self, client: blivedm.BLiveClient, message: web_models.GuardBuyMessage):
         print(f'[{client.room_id}] {message.username} 购买{message.gift_name}')
 
     # 点赞消息处理：PS：可能存在并发问题
-    def _click_like(self, client:blivedm.BLiveClient, data: web_models.ClickData):
+    def _click_like(self, client: blivedm.BLiveClient, data: web_models.ClickData):
         if len(data.uname) != 0:
             print(f'[{client.room_id}] {data.uname} {data.like_text}')
-            azure_tts_speech(f'感谢 {data.uname} {data.like_text}')
+            speech(f'感谢 {data.uname} {data.like_text}')
         else:
             # 点赞数量更新，本场直播的总点赞数量
             print(f'[{client.room_id}] 本次直播点赞数量达到 {data.click_count} 次')
-            azure_tts_speech(f'本次直播点赞数量达到 {data.click_count} 次')
-
+            speech(f'本次直播点赞数量达到 {data.click_count} 次')
 
     def _on_super_chat(self, client: blivedm.BLiveClient, message: web_models.SuperChatMessage):
         print(f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}')
@@ -151,6 +164,13 @@ def split_and_reassemble(number):
     # 重新组装成带逗号的字符串
     result_str = ",".join(digits)
     return result_str
+
+
+def speech(text):
+    if MODE == 'local':
+        text_to_speech(text)
+    if MODE == 'azure':
+        azure_tts_speech(text)
 
 
 if __name__ == '__main__':
