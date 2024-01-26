@@ -41,6 +41,7 @@ logged_unknown_cmds = {
     'STOP_LIVE_ROOM_LIST',
     'SUPER_CHAT_MESSAGE_JPN',
     'WIDGET_BANNER',
+    'ROOM_CHANGE', # 关闭直播？ command={'cmd': 'ROOM_CHANGE', 'data': {'title': '裸辞直播：今天研究一下B站弹幕姬', 'area_id': 372, 'parent_area_id': 11, 'area_name': '校园学习', 'parent_area_name': '知识', 'live_key': '0', 'sub_session_key': ''}}
     'TRADING_SCORE', # command={'cmd': 'TRADING_SCORE', 'data': {'bubble_show_time': 3, 'num': 2, 'score_id': 3, 'uid': 412847209, 'update_time': 1706173741, 'update_type': 1}}
     'SPREAD_ORDER_START', # command={'cmd': 'SPREAD_ORDER_START', 'data': {'order_id': 5862464, 'order_status': 1, 'roomid': 30886597, 'timestamp': 1706173750, 'uid': 412847209}}
     'SPREAD_ORDER_OVER', # command={'cmd': 'SPREAD_ORDER_OVER', 'data': {'order_id': 5862464, 'order_status': 0, 'timestamp': 1706175599, 'uid': 412847209}}

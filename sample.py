@@ -12,15 +12,11 @@ import blivedm.models.web as web_models
 
 # 直播间ID的取值看直播间URL
 TEST_ROOM_IDS = [
-    12235923,
-    14327465,
-    21396545,
-    21449083,
-    23105590,
+    30886597
 ]
 
-# 这里填一个已登录账号的cookie。不填cookie也可以连接，但是收到弹幕的用户名会打码，UID会变成0
-SESSDATA = ''
+# 这里填一个已登录账号的cookie中的SESSDATA。不填cookie也可以连接，但是收到弹幕的用户名会打码，UID会变成0
+SESSDATA = '2068e9ae%2C1720945833%2C96ced%2A12CjDV0UPveqeK5crPTdyJF4Fiel5GAZlsbAEVubFRGl8APU9SAU3kkuZzPs0pBEVwCo0SVlBoVDdnWGpRR2hEZjVxQjNuanY5a05pdFRTblJzcm4xa01zOGtOWW54NlA3MlZHTTJycE00Vi1HaXVJQWFCeGVSMWFxOFY2OUpCdDlINkJzaUstb3V3IIEC'
 
 session: Optional[aiohttp.ClientSession] = None
 
