@@ -111,12 +111,12 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
 
     # 进入直播间
     def _on_inter(self, client: blivedm.BLiveClient, data: web_models.UserInData):
-        print(f'[{client.room_id}] {data.uname} 进入直播间了')
-        speech(f'欢迎 {data.uname} 进入直播间，老板常来玩啊！')
+        print(f' {data.uname} 进入直播间了')
+        speech(f'欢迎 {data.uname} 进入直播间，记得常来玩哦！')
 
     # 弹幕消息
     def _on_danmaku(self, client: blivedm.BLiveClient, message: web_models.DanmakuMessage):
-        print(f'[{client.room_id}] {message.uname}：{message.msg}')
+        print(f' {message.uname}：{message.msg}')
         msg = message.msg
         try:
             msg = split_and_reassemble(int(message.msg))
@@ -134,26 +134,26 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
 
     # 礼物信息
     def _on_gift(self, client: blivedm.BLiveClient, message: web_models.GiftMessage):
-        print(f'[{client.room_id}] {message.uname} 赠送{message.gift_name}x{message.num}'
+        print(f' {message.uname} 赠送{message.gift_name}x{message.num}'
               f' （{message.coin_type}瓜子x{message.total_coin}）')
         speech(f'感谢 {message.uname} 赠送的 {message.num}个 {message.gift_name}，谢谢老板，老板大气！')
 
     # 舰长？
     def _on_buy_guard(self, client: blivedm.BLiveClient, message: web_models.GuardBuyMessage):
-        print(f'[{client.room_id}] {message.username} 购买{message.gift_name}')
+        print(f' {message.username} 购买{message.gift_name}')
 
     # 点赞消息处理：PS：可能存在并发问题
     def _click_like(self, client: blivedm.BLiveClient, data: web_models.ClickData):
         if len(data.uname) != 0:
-            print(f'[{client.room_id}] {data.uname} {data.like_text}')
+            print(f' {data.uname} {data.like_text}')
             speech(f'感谢 {data.uname} {data.like_text}')
         else:
             # 点赞数量更新，本场直播的总点赞数量
-            print(f'[{client.room_id}] 本次直播点赞数量达到 {data.click_count} 次')
+            print(f' 本次直播点赞数量达到 {data.click_count} 次')
             speech(f'本次直播点赞数量达到 {data.click_count} 次')
 
     def _on_super_chat(self, client: blivedm.BLiveClient, message: web_models.SuperChatMessage):
-        print(f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}')
+        print(f' 醒目留言 ¥{message.price} {message.uname}：{message.message}')
 
 
 def split_and_reassemble(number):

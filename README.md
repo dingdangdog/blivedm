@@ -59,7 +59,7 @@ pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd
 	"zh-CN-XiaochenMultilingualNeural1": "（女）",
 	"zh-CN-XiaorouNeural1": "（女）",
 	"zh-CN-XiaoxiaoDialectsNeural1": "（女）",
-	"zh-CN-XiaoxiaoMultilingualNeural1": "（女）",
+	"zh-CN-XiaoxiaoMultilingualNeural1": "（女）no voice？",
 	"zh-CN-YunjieNeural1": "（男）",
 	"zh-CN-YunyiMultilingualNeural1": "（男）"
 }
