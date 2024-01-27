@@ -16,7 +16,7 @@ def init_azure_config():
     global SECRET_KEY
     global REGION
     global ENDPOINT
-    config = read_json_config()
+    config = read_json_config("config_azure.json")
     SECRET_KEY = config['azure_key']
     MODEL = config['azure_model']
     REGION = config['azure_region']

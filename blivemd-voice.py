@@ -8,8 +8,8 @@ import aiohttp
 import blivedm
 import blivedm.models.web as web_models
 from readConfig import read_json_config
-from pyttsx3Speech import text_to_speech
-from azure_tts import azure_tts_speech, init_azure_config
+from speech_pyttsx3 import text_to_speech
+from speech_azure import azure_tts_speech, init_azure_config
 
 # 直播间ID的取值看直播间URL
 session: Optional[aiohttp.ClientSession] = None
@@ -37,13 +37,14 @@ def init_config():
     global ROOM_IDS
     global SESSDATA
     global HEART_PRINT
-    config = read_json_config()
+    config = read_json_config("config_blive.json")
     PLATFORM = config['platform']
     MODE = config['mode']
     ROOM_IDS = config['room_ids']
     SESSDATA = config['bilibili_SESSION']
     HEART_PRINT = config['bilibili_heart_print']
-    init_azure_config()
+    if MODE == 'azure':
+        init_azure_config()
 
 
 def init_session():

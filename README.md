@@ -17,19 +17,27 @@ pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd
 
 ### platform
 
+> Currently only supports windows.
+
+select: 
 - win (`default`)
 - mac
 - linux
 
 ### mode
 
-- azure
+select:
 - local (`default`)
+- azure
 
 ### bilibili_SESSION
 
-- There should to write a logged in `SESSDATA`, you can get it in `cookie`.
-- You can connect without filling it in, but username and id will not be obtained.
+There should to write a logged in `SESSDATA`, you can get it in `cookie`.
+You can connect without filling it in, but username and id will not be obtained.
+
+### bilibili_heart_print
+
+Heartbeat monitoring information printing interval.
 
 ### azure_model
 
