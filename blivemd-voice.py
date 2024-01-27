@@ -124,7 +124,7 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
         except (ValueError, TypeError):
             msg = msg
         finally:
-            speech(f'{message.uname} 说：{msg}')
+            speech(f'{message.uname}说：{msg}')
 
     # 特殊弹幕通知
     def _on_spacial_danmaku(self, client: blivedm.BLiveClient, message: web_models.SpacialDanMaku):
