@@ -10,6 +10,7 @@ import blivedm.models.web as web_models
 from readConfig import read_json_config
 from speech_pyttsx3 import text_to_speech
 from speech_azure import azure_tts_speech, init_azure_config
+from speech_alibaba import alibaba_tts_speech, init_alibaba_config
 
 # 直播间ID的取值看直播间URL
 session: Optional[aiohttp.ClientSession] = None
@@ -45,6 +46,8 @@ def init_config():
     HEART_PRINT = config['bilibili_heart_print']
     if MODE == 'azure':
         init_azure_config()
+    if MODE == 'alibaba':
+        init_alibaba_config()
 
 
 def init_session():
@@ -172,6 +175,8 @@ def speech(text):
         text_to_speech(text)
     if MODE == 'azure':
         azure_tts_speech(text)
+    if MODE == 'alibaba':
+        alibaba_tts_speech(text)
 
 
 if __name__ == '__main__':

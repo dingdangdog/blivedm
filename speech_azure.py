@@ -32,7 +32,7 @@ def init_azure_config():
 
 
 def azure_tts_speech(text):
-    SYNTHESIZER.speak_text(text)
+    result = SYNTHESIZER.speak_text(text)
 
     # 检查转换是否成功
     # if result.reason == ResultReason.SynthesizingAudioCompleted:
@@ -52,4 +52,5 @@ def azure_tts_speech(text):
 
 
 if __name__ == '__main__':
+    init_azure_config()
     azure_tts_speech("你好，azure！")
