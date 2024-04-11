@@ -25,7 +25,7 @@ HEART_PRINT: int = 10
 async def main():
     init_config()
     init_session()
-    print(f'语音机器人启动成功，启动模式：{MODE}')
+    print(f'语音机器人启动成功，监控直播间：{ROOM_IDS}，语音模式：{MODE}')
     try:
         await run_single_client()
         await run_multi_clients()
@@ -105,7 +105,7 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
 
     # 心跳监听
     def __init__(self):
-        self.heart = 0
+        self.heart = HEART_PRINT
 
     def _on_heartbeat(self, client: blivedm.BLiveClient, message: web_models.HeartbeatMessage):
         if self.heart == HEART_PRINT:
