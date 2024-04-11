@@ -30,30 +30,32 @@ def alibaba_tts_speech(text):
     audioSaveFile = 'aliAudio.wav'
     format = 'wav'
     sampleRate = 16000
-    if os.path.exists(audioSaveFile):
-        # 删除文件
-        os.remove(audioSaveFile)
-    # GET请求方式
+
     processPOSTRequest(text, audioSaveFile, format, sampleRate)
 
     pygame.mixer.init()
     pygame.mixer.music.load(audioSaveFile)
     pygame.mixer.music.play()
 
-    # 等待音频播放完成
+    # 循环处理事件，直到音频播放完成并删除文件
     while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
+        pygame.time.Clock().tick(5)
+    pygame.mixer.music.stop()  # 停止音频播放
+    # 关闭文件
+    pygame.mixer.music.fadeout(200)  # 淡出效果，1000毫秒
+    pygame.mixer.quit()
+    os.remove(audioSaveFile)
 
-#
+
 # def processGETRequest(text, audioSaveFile, format, sampleRate):
-    # 采用RFC 3986规范进行urlencode编码。
-    # textUrlencode = text
-    # Python 3.x请使用urllib.parse.quote_plus。
-    # textUrlencode = urllib.parse.quote_plus(textUrlencode)
-    # textUrlencode = textUrlencode.replace("+", "%20")
-    # textUrlencode = textUrlencode.replace("*", "%2A")
-    # textUrlencode = textUrlencode.replace("%7E", "~")
-    # print('text: ' + textUrlencode)
+# 采用RFC 3986规范进行urlencode编码。
+# textUrlencode = text
+# Python 3.x请使用urllib.parse.quote_plus。
+# textUrlencode = urllib.parse.quote_plus(textUrlencode)
+# textUrlencode = textUrlencode.replace("+", "%20")
+# textUrlencode = textUrlencode.replace("*", "%2A")
+# textUrlencode = textUrlencode.replace("%7E", "~")
+# print('text: ' + textUrlencode)
 #     url = f'https://{ENDPOINT}/stream/v1/tts'
 #     # 设置URL请求参数
 #     url = url + '?appkey=' + ALIBABA_CLOUD_TTS_APPKEY
@@ -98,7 +100,7 @@ def processPOSTRequest(text, audioSaveFile, format, sampleRate):
     }
     # 设置HTTPS Body。
     body = {'appkey': ALIBABA_CLOUD_TTS_APPKEY, 'token': ALIBABA_CLOUD_TTS_TOKEN, 'text': text, 'format': format,
-            'sample_rate': sampleRate}
+            'voice': VOICE, 'sample_rate': sampleRate}
     body = json.dumps(body)
     # print('The POST request body content: ' + body)
     # Python 2.x请使用httplib。
@@ -120,6 +122,7 @@ def processPOSTRequest(text, audioSaveFile, format, sampleRate):
     else:
         print('The POST request failed: ' + str(body))
     conn.close()
+
 
 if __name__ == '__main__':
     init_alibaba_config()
