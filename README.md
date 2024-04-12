@@ -14,7 +14,7 @@ Execute `pip install pyinstaller` to install `pyinstaller`, and then execute the
 pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd-voice.py
 ```
 
-## config
+## config_blive
 
 ### platform
 
