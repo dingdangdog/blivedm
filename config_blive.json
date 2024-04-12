@@ -3,5 +3,12 @@
   "mode":"local",
   "room_ids":[30886597],
   "bilibili_SESSION":"",
-  "bilibili_heart_print": 20
+  "bilibili_heart_print": 20,
+  "voice_text": {
+    "enter": "欢迎 {uname} 进入直播间，记得常来玩哦！",
+    "danmaku": "{uname}说：{msg}",
+    "gift": "感谢 {uname} 赠送的 {num}个{gift_name}，谢谢老板，老板大气！",
+    "like": "感谢 {uname} {like_text}",
+    "like_total": "本次直播点赞数量达到 {click_count} 次"
+  }
 }

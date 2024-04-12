@@ -103,7 +103,7 @@ class BaseHandler(HandlerInterface):
         # 特殊弹幕通知
         # 'COMMON_NOTICE_DANMAKU': _make_msg_callback('_on_spacial_danmaku', web_models.SpacialDanMaku),
         # 进入直播间
-        'INTERACT_WORD': _make_msg_callback('_on_inter', web_models.UserInData),
+        'INTERACT_WORD': _make_msg_callback('_on_enter', web_models.UserInData),
         # 有人上舰
         'GUARD_BUY': _make_msg_callback('_on_buy_guard', web_models.GuardBuyMessage),
         # 醒目留言

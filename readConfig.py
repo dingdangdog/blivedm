@@ -12,7 +12,7 @@ def read_json_config(filename="config.json"):
     # 检查文件是否存在
     if os.path.exists(config_path):
         # 读取 JSON 配置文件
-        with open(config_path, 'r') as json_file:
+        with open(config_path, 'r', encoding='utf-8') as json_file:
             config_data = json.load(json_file)
         return config_data
     else:

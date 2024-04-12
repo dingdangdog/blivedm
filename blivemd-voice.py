@@ -20,7 +20,7 @@ MODE: str = 'local'
 ROOM_IDS: [] = []
 SESSDATA: str = ''
 HEART_PRINT: int = 10
-
+VOICE_TEXT: {} = {}
 
 async def main():
     init_config()
@@ -39,12 +39,14 @@ def init_config():
     global ROOM_IDS
     global SESSDATA
     global HEART_PRINT
+    global VOICE_TEXT
     config = read_json_config("config_blive.json")
     PLATFORM = config['platform']
     MODE = config['mode']
     ROOM_IDS = config['room_ids']
     SESSDATA = config['bilibili_SESSION']
     HEART_PRINT = config['bilibili_heart_print']
+    VOICE_TEXT = config['voice_text']
     if MODE == 'azure':
         init_azure_config()
     if MODE == 'alibaba':
@@ -115,9 +117,10 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
             self.heart += 1
 
     # 进入直播间
-    def _on_inter(self, client: blivedm.BLiveClient, data: web_models.UserInData):
+    def _on_enter(self, client: blivedm.BLiveClient, data: web_models.UserInData):
         print(f' {data.uname} 进入直播间了')
-        speech(f'欢迎 {data.uname} 进入直播间，记得常来玩哦！')
+        voice_text = VOICE_TEXT["enter"].format(uname=data.uname)
+        speech(voice_text)
 
     # 弹幕消息
     def _on_danmaku(self, client: blivedm.BLiveClient, message: web_models.DanmakuMessage):
@@ -128,7 +131,8 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
         except (ValueError, TypeError):
             msg = msg
         finally:
-            speech(f'{message.uname}说：{msg}')
+            voice_text = VOICE_TEXT["danmaku"].format(uname=message.uname, msg=msg)
+            speech(voice_text)
 
     # 特殊弹幕通知
     def _on_spacial_danmaku(self, client: blivedm.BLiveClient, message: web_models.SpacialDanMaku):
@@ -141,7 +145,8 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
     def _on_gift(self, client: blivedm.BLiveClient, message: web_models.GiftMessage):
         print(f' {message.uname} 赠送{message.gift_name}x{message.num}'
               f' （{message.coin_type}瓜子x{message.total_coin}）')
-        speech(f'感谢 {message.uname} 赠送的 {message.num}个 {message.gift_name}，谢谢老板，老板大气！')
+        voice_text = VOICE_TEXT["gift"].format(uname=message.uname, num=message.num, gift_name=message.gift_name)
+        speech(voice_text)
 
     # 舰长？
     def _on_buy_guard(self, client: blivedm.BLiveClient, message: web_models.GuardBuyMessage):
@@ -151,11 +156,13 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
     def _click_like(self, client: blivedm.BLiveClient, data: web_models.ClickData):
         if len(data.uname) != 0:
             print(f' {data.uname} {data.like_text}')
-            speech(f'感谢 {data.uname} {data.like_text}')
+            voice_text = VOICE_TEXT["like"].format(uname=data.uname, like_text=data.like_text)
+            speech(voice_text)
         else:
             # 点赞数量更新，本场直播的总点赞数量
             print(f' 本次直播点赞数量达到 {data.click_count} 次')
-            speech(f'本次直播点赞数量达到 {data.click_count} 次')
+            voice_text = VOICE_TEXT["like_total"].format(click_count=data.click_count)
+            speech(voice_text)
 
     def _on_super_chat(self, client: blivedm.BLiveClient, message: web_models.SuperChatMessage):
         print(f' 醒目留言 ¥{message.price} {message.uname}：{message.message}')
