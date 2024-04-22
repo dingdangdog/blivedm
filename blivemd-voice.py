@@ -237,7 +237,7 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
                 if self.last_click_like_num < LIKE_NUMS[index - 1]:
                     # 首次超过设置的最大值。特殊播报
                     self.last_click_like_num = data.click_count
-                    text = f' 太棒了！本次直播点赞数量超过最大值 {LIKE_NUMS[len(LIKE_NUMS) - 1]} 次，达到 {data.click_count} 次'
+                    text = f' 太棒了！本次直播点赞数量超过设定最大值 {LIKE_NUMS[len(LIKE_NUMS) - 1]} 次，达到 {data.click_count} 次'
                     print(text)
                     speech(text)
                 else:
@@ -245,7 +245,7 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
                     # 如：上一次播报的是1909次，则下次将会在超过2009次时播报，否则不播报
                     self.last_click_like_num = data.click_count + LIKE_NEXT_INTERVAL
                     # 点赞数量更新，本场直播的总点赞数量
-                    text = f' 本次直播点赞数量达到 {data.click_count} 次'
+                    text = f' 点赞数量达到 {data.click_count} 次'
                     print(text)
                     speech(text)
                 return
