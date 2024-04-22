@@ -42,7 +42,7 @@ logged_unknown_cmds = {
     # 'ROOM_REAL_TIME_MESSAGE_UPDATE',
     # 'STOP_LIVE_ROOM_LIST',
     # 'SUPER_CHAT_MESSAGE_JPN',
-    # 'WIDGET_BANNER', # 小部件横幅？
+    'WIDGET_BANNER', # 可能是一些B站官方的活动公告或通知
     'GUARD_HONOR_THOUSAND', # 横幅消息？command={'cmd': 'GUARD_HONOR_THOUSAND', 'data': {'add': [], 'del': [1900141897, 1778026586, 1459104794, 672328094, 480680646, 412504829, 401315430, 399815233, 304578055, 194484313, 56748733, 10893225, 8739477, 686127, 391445, 114866, 13046]}}
     'STOP_LIVE_ROOM_LIST', # 停止直播房间通知？command={'cmd': 'STOP_LIVE_ROOM_LIST', 'data': {'room_id_list': [26134056, 27733015, 30241196, 3111310, 31210096, 31633765, 583957, 132630, 13605776, 1878685, 22254974, 26347978, 26646310, 30131067, 31043525, 31883577, 9068894, 21473355, 22376685, 22479025, 23072802, 23692844, 26364316, 27183535, 30908405, 31183446, 31412845, 31599685, 346947, 5581190, 714445, 11948353, 21602575, 2175284, 24840855, 27205276, 31002575, 31745517, 31814106, 31822065, 3406491, 5466700, 14808633, 24362801, 26193324, 27617835, 2851255, 30230515, 31309055, 31572045, 31792466, 31844625, 31883095, 31883446, 4329180, 13407895, 23776755, 25857732, 27568487, 27822717, 31583737, 31883513, 5473867, 9488965, 11853957, 24590414, 27566417, 30563397, 31061877, 31570617, 31583726, 31765226, 3436197, 13934740, 2044107, 25270307, 26914407, 27816937, 30241167, 5556097, 26320860, 269655, 27183177, 27777747, 27880760, 2826764, 30637667, 31049780, 31535426, 2283471, 24797968, 27907920, 30524453, 31146690, 31207910, 31542580, 31764770, 31782448, 2065784, 23534120, 24909030, 26914140, 27778610, 30184630, 30911422, 31354446, 31693750, 31710427, 6627923, 9056564, 14920605, 25431380, 30198500, 30382320, 31313400, 31672956, 8437310, 1758371, 23361799, 22504516, 22886883, 23387005, 30098122, 23747371, 508371, 5612200, 8287300, 10422640, 11644391, 25674182, 2695765, 27771538, 30007971, 5126047, 9318162, 12487527, 14643888, 21075066, 22841601, 22898134, 10485486, 26860584, 27149142, 31497643, 15106058, 26656064, 27930777, 31379695, 4261325, 12066164, 21441782, 25424943, 27878493, 27962953, 30961365, 31819604, 6159041, 8892113, 13817334, 22598619, 30193671, 31675309, 26843755, 26998825, 30911742, 806038, 25114227, 30970679, 24369111, 25674623, 264110, 31311768, 31727993, 5334517, 63258, 150596, 22717970, 22730263, 25674511, 31619124, 31871974, 363485, 23530960, 24228718, 30339892, 31100672, 1366096, 27633961, 2847091, 6806182, 26209819, 2708384, 27487787, 30394118, 31587278, 31615570, 12216533, 14982610, 2398772, 26049768, 26079169, 26548927, 30301316, 30339901, 30636547, 11633159, 23570440]}}
     'ENTRY_EFFECT_MUST_RECEIVE', # 空房间？command={'cmd': 'ENTRY_EFFECT_MUST_RECEIVE', 'data': {'id': 136, 'uid': 412847209, 'target_id': 412847209, 'mock_effect': 0, 'face': 'https://i1.hdslb.com/bfs/face/759f1c2cd63246dc2ac321186cf532579c18ca5a.jpg', 'privilege_type': 0, 'copy_writing': '欢迎 <%老狗自闭%> 进入直播间', 'copy_color': '#000000', 'highlight_color': '#FFF100', 'priority': 1, 'basemap_url': 'https://i0.hdslb.com/bfs/live/mlive/d4708dee21646e6ebcc58e7f6fa2a972c1d25b36.png', 'show_avatar': 1, 'effective_time': 2, 'web_basemap_url': 'https://i0.hdslb.com/bfs/live/mlive/d4708dee21646e6ebcc58e7f6fa2a972c1d25b36.png', 'web_effective_time': 2, 'web_effect_close': 0, 'web_close_time': 900, 'business': 3, 'copy_writing_v2': '欢迎 <^icon^> <%老狗自闭%> 进入直播间', 'icon_list': [2], 'max_delay_time': 7, 'trigger_time': 1706283359662552605, 'identities': 22, 'effect_silent_time': 0, 'effective_time_new': 0, 'web_dynamic_url_webp': '', 'web_dynamic_url_apng': '', 'mobile_dynamic_url_webp': '', 'wealthy_info': None, 'new_style': 0, 'is_mystery': False, 'uinfo': {'uid': 412847209, 'base': {'name': '老狗自闭', 'face': 'https://i1.hdslb.com/bfs/face/759f1c2cd63246dc2ac321186cf532579c18ca5a.jpg', 'name_color': 0, 'is_mystery': False, 'risk_ctrl_info': {'name': '老狗自闭', 'face': 'https://i1.hdslb.com/bfs/face/759f1c2cd63246dc2ac321186cf532579c18ca5a.jpg'}, 'origin_info': {'name': '老狗自闭', 'face': 'https://i1.hdslb.com/bfs/face/759f1c2cd63246dc2ac321186cf532579c18ca5a.jpg'}, 'official_info': {'role': 0, 'title': '', 'desc': '', 'type': -1}}, 'medal': None, 'wealth': None, 'title': None, 'guard': None, 'uhead_frame': None, 'guard_leader': None}}}
@@ -100,6 +100,8 @@ class BaseHandler(HandlerInterface):
         'DANMU_MSG': __danmu_msg_callback,
         # 有人送礼
         'SEND_GIFT': _make_msg_callback('_on_gift', web_models.GiftMessage),
+        # 有人送礼-新礼物？
+        'POPULARITY_RED_POCKET_V2_NEW': _make_msg_callback('_on_red_pocket', web_models.RedPocketMessage),
         # 特殊弹幕通知
         # 'COMMON_NOTICE_DANMAKU': _make_msg_callback('_on_spacial_danmaku', web_models.SpacialDanMaku),
         # 进入直播间
@@ -158,9 +160,24 @@ class BaseHandler(HandlerInterface):
         收到心跳包
         """
 
+    def _on_enter(self, client: ws_base.WebSocketClientBase, data: web_models.UserInData):
+        """
+        收到心跳包
+        """
+
     def _on_danmaku(self, client: ws_base.WebSocketClientBase, message: web_models.DanmakuMessage):
         """
         收到弹幕
+        """
+
+    def _on_spacial_danmaku(self, client: ws_base.WebSocketClientBase, message: web_models.SpacialDanMaku):
+        """
+        收到特殊弹幕
+        """
+
+    def _on_red_pocket(self, client: ws_base.WebSocketClientBase, message: web_models.RedPocketMessage):
+        """
+        红包
         """
 
     def _on_gift(self, client: ws_base.WebSocketClientBase, message: web_models.GiftMessage):
@@ -169,6 +186,11 @@ class BaseHandler(HandlerInterface):
         """
 
     def _on_buy_guard(self, client: ws_base.WebSocketClientBase, message: web_models.GuardBuyMessage):
+        """
+        有人上舰
+        """
+
+    def _click_like(self, client: ws_base.WebSocketClientBase, data: web_models.ClickData):
         """
         有人上舰
         """

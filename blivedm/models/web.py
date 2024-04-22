@@ -329,8 +329,9 @@ class SpacialDanMaku:
 @dataclasses.dataclass
 class UserInData:
     uname: str = ''
-    uname_color: str=''
-    dmscore: int=0
+    uname_color: str = ''
+    dmscore: int = 0
+    medal_level: int = 0
 
     @classmethod
     def from_command(cls, data: dict):
@@ -338,6 +339,7 @@ class UserInData:
             uname=data.get('uname', ''),  # 设置默认值，这里假设默认值为''
             uname_color=data.get('uname_color', ''),
             dmscore=data.get('dmscore', 0),
+            medal_level=data['fans_medal']['medal_level'],
         )
 
 @dataclasses.dataclass
@@ -395,6 +397,71 @@ class GiftMessage:
             coin_type=data['coin_type'],
             total_coin=data['total_coin'],
             tid=data['tid'],
+        )
+
+
+@dataclasses.dataclass
+class RedPocketMessage:
+    """
+    红包礼物消息内容
+        "lot_id": 18757968,
+		"start_time": 1713789551,
+		"current_time": 1713789551,
+		"wait_num": 0,
+		"wait_num_v2": 0,
+		"uname": "Au大西几-录屏版",
+		"uid": 411379549,
+		"action": "送出",
+		"num": 1,
+		"gift_name": "红包",
+		"gift_id": 13000,
+		"price": 20,
+		"name_color": "",
+    """
+
+    gift_name: str = ''
+    """礼物名"""
+    num: int = 0
+    """数量"""
+    price: int = 0
+    """礼物单价"""
+    uname: str = ''
+    """用户名"""
+    uid: int = 0
+    """用户ID"""
+    current_time: int = 0
+    """时间戳"""
+    start_time: int = 0
+    """时间戳"""
+    lot_id: int = 0
+    """时间戳"""
+    wait_num: int = 0
+    """时间戳"""
+    wait_num_v2: int = 0
+    """时间戳"""
+    gift_id: int = 0
+    """礼物ID"""
+    name_color: str = ''
+    """"""
+    action: str = ''
+    """动作：送出"""
+
+    @classmethod
+    def from_command(cls, data: dict):
+        return cls(
+            gift_name=data['giftName'],
+            num=data['num'],
+            price=data['price'],
+            uname=data['uname'],
+            uid=data['uid'],
+            current_time=data['current_time'],
+            start_time=data['start_time'],
+            lot_id=data['lot_id'],
+            wait_num=data['wait_num'],
+            wait_num_v2=data['wait_num_v2'],
+            gift_id=data['gift_id'],
+            name_color=data['name_color'],
+            action=data['action'],
         )
 
 
