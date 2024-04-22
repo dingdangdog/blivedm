@@ -41,9 +41,26 @@ You can connect without filling it in, but username and id will not be obtained.
 
 ### bilibili_heart_print
 
-心跳监控信息打印间隔。
+- 含义：心跳监听次数
+- 默认值：`10`
+- 作用：心跳监控信息打印心跳次数间隔。
 
 Heartbeat monitoring information printing interval.
+
+### welcome_level
+
+- 含义：用户粉丝牌等级
+- 默认值：`0`
+- 作用：进场提示音等级控制，粉丝牌大于等于指定等级的用户进入房间，才会用欢迎语音和弹幕提示
+
+
+### continuous_gift_interval
+
+- 含义：秒
+- 默认值：`1`
+- 作用：用于配置连续礼物的时间间隔，时间间隔内的相同礼物将会合并播报。
+
+Used to configure the time interval for consecutive gifts. The same gifts within the time interval will be combined and broadcast.
 
 ### voice_text
 
@@ -67,6 +84,18 @@ Used to configure commonly used voice texts.
 - gift：礼物播报的语音文字，`uname`-用户昵称、`num`-礼物个数、`gift_name`-礼物名称；
 - like：用户点赞的语音文字，`uname`-用户昵称、`like_text`-B站官方点赞提示文字；
 - like_total：点赞总结的语音文字，`click_count`-总点赞次数。
+
+### like_nums（待测试）
+
+- 含义：点赞数量数组
+- 默认值：`[66, 188, 300, 500, 666, 888, 999, 1666]`
+- 作用：指定需要语音播报的点赞数量，当低于最小值时，语音不会做任何播报
+
+### max_next_interval
+
+- 含义：点赞超过上限后的递增数量
+- 默认值：`100`
+- 作用：点赞数量超过设定数组 `like_nums` 的最大值后，后续语音播报与上次语音播报的间隔
 
 ## azure_config
 
