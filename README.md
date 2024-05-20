@@ -161,7 +161,7 @@ Used to configure commonly used voice texts.
 
 ## config_soVits
 
-以下时使用 `GPT-soVITS-Interface` 时需要配置的信息，其中除 `sovits_host` 配置项外，都可以忽略不填，具体配置参数请自行学习 `GPT-soVITS-Interface`，本仓库不做介绍。
+以下是使用 `GPT-soVITS-Interface` 时需要配置的信息，其中除 `sovits_host` 配置项外，都可以忽略不填，具体配置参数请自行学习 `GPT-soVITS-Interface`，本仓库不做介绍。
 
 ```json
 {
