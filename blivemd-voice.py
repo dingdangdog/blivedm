@@ -14,6 +14,7 @@ from readConfig import read_json_config
 from speech_pyttsx3 import text_to_speech
 from speech_azure import azure_tts_speech, init_azure_config
 from speech_alibaba import alibaba_tts_speech, init_alibaba_config
+from speech_sovits import sovits_tts_speech, init_sovits_config
 
 # 直播间ID的取值看直播间URL
 session: Optional[aiohttp.ClientSession] = None
@@ -54,7 +55,7 @@ def init_config():
     global LIKE_NUMS
     global LIKE_NEXT_INTERVAL
     global WELCOME_LEVEL
-    config = read_json_config("config_blive.json")
+    config = read_json_config("config.json")
     PLATFORM = config['platform']
     MODE = config['mode']
     ROOM_IDS = config['room_ids']
@@ -69,6 +70,8 @@ def init_config():
         init_azure_config()
     if MODE == 'alibaba':
         init_alibaba_config()
+    if MODE == 'sovits':
+        init_sovits_config()
 
 
 def init_session():
@@ -241,7 +244,7 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
                     print(text)
                     speech(text)
                 else:
-                    # 后续超过最大值后，按照上体播报后的数量100递增提示，每超过100次播报一次。
+                    # 后续超过最大值后，按照上次播报后的数量100递增提示，每超过100次播报一次。
                     # 如：上一次播报的是1909次，则下次将会在超过2009次时播报，否则不播报
                     self.last_click_like_num = data.click_count + LIKE_NEXT_INTERVAL
                     # 点赞数量更新，本场直播的总点赞数量
@@ -287,6 +290,8 @@ def speech(text):
         azure_tts_speech(text)
     if MODE == 'alibaba':
         alibaba_tts_speech(text)
+    if MODE == 'sovits':
+        sovits_tts_speech(text)
 
 
 if __name__ == '__main__':

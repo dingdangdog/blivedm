@@ -14,7 +14,7 @@ Execute `pip install pyinstaller` to install `pyinstaller`, and then execute the
 pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd-voice.py
 ```
 
-## config_blive
+## config
 
 ### platform
 
@@ -156,3 +156,5 @@ Used to configure commonly used voice texts.
 - `alibaba_token`：目前仅支持通过控制台获取临时token，临时token有效时间为24小时，失效后需要重新获取，获取方式可参考：[阿里云文档](https://help.aliyun.com/zh/isi/getting-started/obtain-an-access-token-in-the-console)；
 - `alibaba_model`：参考官方文档：[语音合成-接口说明](https://help.aliyun.com/zh/isi/developer-reference/overview-of-speech-synthesis)；
 - `alibaba_endpoint`：阿里云接口节点，有上海`shanghai`、北京`beijing `、深圳`shenzhen`三个节点，自行修改即可。
+
+## config_soVits

@@ -1,0 +1,14 @@
+{
+  "sovits_host":"http://127.0.0.1:5000/tts",
+  "sovits_model":"Hutao",
+  "sovits_language":"auto",
+  "sovits_emotion":"",
+  "sovits_top_k":"",
+  "sovits_top_p":"",
+  "sovits_temperature":"",
+  "sovits_batch_size":"",
+  "sovits_speed":"1.0",
+  "sovits_save_temp":"false",
+  "sovits_stream":"false",
+  "sovits_format":"wav"
+}
