@@ -16,6 +16,29 @@ pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd
 
 ## config
 
+文件名：`config.json`，默认配置：
+
+```json
+{
+  "platform":"win",
+  "mode":"local",
+  "room_ids":[],
+  "bilibili_SESSION":"",
+  "bilibili_heart_print": 10,
+  "continuous_gift_interval": 1,
+  "welcome_level": 0,
+  "voice_text": {
+    "enter": "欢迎 {uname} 进入直播间，记得常来玩哦！",
+    "danmaku": "{uname}说：{msg}",
+    "gift": "感谢 {uname} 赠送的 {num}个{gift_name}，谢谢老板，老板大气！",
+    "like": "感谢 {uname} {like_text}",
+    "like_total": "本次直播点赞数量超过 {limit_num} 次，达到 {click_count} 次"
+  },
+  "like_nums": [66, 188, 300, 500, 666, 888, 999, 1666],
+  "max_next_interval": 100
+}
+```
+
 ### platform
 
 > 目前仅支持windows。
@@ -101,6 +124,17 @@ Used to configure commonly used voice texts.
 
 ## azure_config
 
+文件名：`config_azure.json`，默认配置：
+
+```json
+{
+  "azure_key":"",
+  "azure_model":"",
+  "azure_region":"",
+  "azure_endpoint":""
+}
+```
+
 ### azure_model
 
 [语音服务的语言和声音支持](https://learn.microsoft.com/zh-cn/azure/ai-services/speech-service/language-support?tabs=tts)
@@ -144,6 +178,7 @@ Used to configure commonly used voice texts.
 
 已支持阿里巴巴的【[智能语音交互](https://nls-portal.console.aliyun.com/overview)】，目前以测试方式集成，需要每天申请token。
 
+文件名：`config_alibaba.json`，默认配置：
 ```json
 {
   "alibaba_appkey":"",
