@@ -1,14 +1,18 @@
 {
   "platform":"win",
   "mode":"local",
-  "room_ids":[30886597],
+  "room_ids":[],
   "bilibili_SESSION":"",
-  "bilibili_heart_print": 20,
+  "bilibili_heart_print": 10,
+  "continuous_gift_interval": 1,
+  "welcome_level": 0,
   "voice_text": {
     "enter": "欢迎 {uname} 进入直播间，记得常来玩哦！",
     "danmaku": "{uname}说：{msg}",
     "gift": "感谢 {uname} 赠送的 {num}个{gift_name}，谢谢老板，老板大气！",
     "like": "感谢 {uname} {like_text}",
-    "like_total": "本次直播点赞数量达到 {click_count} 次"
-  }
+    "like_total": "本次直播点赞数量超过 {limit_num} 次，达到 {click_count} 次"
+  },
+  "like_nums": [66, 188, 300, 500, 666, 888, 999, 1666],
+  "max_next_interval": 100
 }

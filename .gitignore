@@ -30,7 +30,7 @@ wheels/
 *.manifest
 *.spec
 
-config.json
+config_bak.json
 
 # Installer logs
 pip-log.txt
