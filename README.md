@@ -7,6 +7,7 @@ Fork Form：[blivedm](https://github.com/xfgryujk/blivedm)
 执行 `pip install pyinstaller` 安装 `pyinstaller`，然后执行下面的打包脚本：
 
 Execute `pip install pyinstaller` to install `pyinstaller`, and then execute the following packaging script:
+
 ```shell
 # pyinstaller --onefile blivemd-voice.py
 
@@ -43,7 +44,8 @@ pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd
 
 > 目前仅支持windows。
 
-可选配置（select）: 
+可选配置（select）:
+
 - win (`default`)
 - mac
 - linux
@@ -51,6 +53,7 @@ pyinstaller --onefile --add-data "./.venv/Lib/site-packages/azure;azure" blivemd
 ### mode
 
 可选配置（select）:
+
 - local (`default`)
 - azure
 - alibaba
@@ -78,7 +81,6 @@ Heartbeat monitoring information printing interval.
 - 默认值：`0`
 - 作用：进场提示音等级控制，粉丝牌大于等于指定等级的用户进入房间，才会用欢迎语音和弹幕提示
 
-
 ### continuous_gift_interval
 
 - 含义：秒
@@ -94,6 +96,7 @@ Used to configure the time interval for consecutive gifts. The same gifts within
 Used to configure commonly used voice texts.
 
 默认配置（default）：
+
 ```json
 {
     "enter": "欢迎 {uname} 进入直播间，记得常来玩哦！",
@@ -103,7 +106,9 @@ Used to configure commonly used voice texts.
     "like_total": "本次直播点赞数量达到 {click_count} 次"
 }
 ```
+
 配置详细说明：
+
 - enter：进入直播间的语音文字，`uname` 会自动替换为用户昵称；
 - danmaku：弹幕播报的语音文字，`uname`-用户昵称、`msg`-弹幕内容；
 - gift：礼物播报的语音文字，`uname`-用户昵称、`num`-礼物个数、`gift_name`-礼物名称；
@@ -142,35 +147,36 @@ Used to configure commonly used voice texts.
 [Language and voice support for the Speech service](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts)
 
 - 中文模型（2024年1月记录）：
+
 ```json
 {
-	"zh-CN-XiaoxiaoNeural": "（女）(default)",
-	"zh-CN-YunxiNeural": "（男）",
-	"zh-CN-YunjianNeural": "（男）",
-	"zh-CN-XiaoyiNeural": "（女）",
-	"zh-CN-YunyangNeural": "（男）",
-	"zh-CN-XiaochenNeural": "（女）",
-	"zh-CN-XiaohanNeural": "（女）",
-	"zh-CN-XiaomengNeural": "（女）",
-	"zh-CN-XiaomoNeural": "（女）",
-	"zh-CN-XiaoqiuNeural": "（女）",
-	"zh-CN-XiaoruiNeural": "（女）",
-	"zh-CN-XiaoshuangNeural": "（女性、儿童）",
-	"zh-CN-XiaoxuanNeural": "（女）",
-	"zh-CN-XiaoyanNeural": "（女）",
-	"zh-CN-XiaoyouNeural": "（女性、儿童）",
-	"zh-CN-XiaozhenNeural": "（女）",
-	"zh-CN-YunfengNeural": "（男）",
-	"zh-CN-YunhaoNeural": "（男）",
-	"zh-CN-YunxiaNeural": "（男）",
-	"zh-CN-YunyeNeural": "（男）",
-	"zh-CN-YunzeNeural": "（男）",
-	"zh-CN-XiaochenMultilingualNeural1": "（女）",
-	"zh-CN-XiaorouNeural1": "（女）",
-	"zh-CN-XiaoxiaoDialectsNeural1": "（女）",
-	"zh-CN-XiaoxiaoMultilingualNeural1": "（女）no voice？",
-	"zh-CN-YunjieNeural1": "（男）",
-	"zh-CN-YunyiMultilingualNeural1": "（男）"
+ "zh-CN-XiaoxiaoNeural": "（女）(default)",
+ "zh-CN-YunxiNeural": "（男）",
+ "zh-CN-YunjianNeural": "（男）",
+ "zh-CN-XiaoyiNeural": "（女）",
+ "zh-CN-YunyangNeural": "（男）",
+ "zh-CN-XiaochenNeural": "（女）",
+ "zh-CN-XiaohanNeural": "（女）",
+ "zh-CN-XiaomengNeural": "（女）",
+ "zh-CN-XiaomoNeural": "（女）",
+ "zh-CN-XiaoqiuNeural": "（女）",
+ "zh-CN-XiaoruiNeural": "（女）",
+ "zh-CN-XiaoshuangNeural": "（女性、儿童）",
+ "zh-CN-XiaoxuanNeural": "（女）",
+ "zh-CN-XiaoyanNeural": "（女）",
+ "zh-CN-XiaoyouNeural": "（女性、儿童）",
+ "zh-CN-XiaozhenNeural": "（女）",
+ "zh-CN-YunfengNeural": "（男）",
+ "zh-CN-YunhaoNeural": "（男）",
+ "zh-CN-YunxiaNeural": "（男）",
+ "zh-CN-YunyeNeural": "（男）",
+ "zh-CN-YunzeNeural": "（男）",
+ "zh-CN-XiaochenMultilingualNeural1": "（女）",
+ "zh-CN-XiaorouNeural1": "（女）",
+ "zh-CN-XiaoxiaoDialectsNeural1": "（女）",
+ "zh-CN-XiaoxiaoMultilingualNeural1": "（女）no voice？",
+ "zh-CN-YunjieNeural1": "（男）",
+ "zh-CN-YunyiMultilingualNeural1": "（男）"
 }
 ```
 
@@ -179,6 +185,7 @@ Used to configure commonly used voice texts.
 已支持阿里巴巴的【[智能语音交互](https://nls-portal.console.aliyun.com/overview)】，目前以测试方式集成，需要每天申请token。
 
 文件名：`config_alibaba.json`，默认配置：
+
 ```json
 {
   "alibaba_appkey":"",
@@ -189,10 +196,11 @@ Used to configure commonly used voice texts.
 ```
 
 `alibaba` 智能语音交互的配置如上所示，参数介绍：
+
 - `alibaba_appkey`：智能语音交互创建项目后，项目的`appkey`；
 - `alibaba_token`：目前仅支持通过控制台获取临时token，临时token有效时间为24小时，失效后需要重新获取，获取方式可参考：[阿里云文档](https://help.aliyun.com/zh/isi/getting-started/obtain-an-access-token-in-the-console)；
 - `alibaba_model`：参考官方文档：[语音合成-接口说明](https://help.aliyun.com/zh/isi/developer-reference/overview-of-speech-synthesis)；
-- `alibaba_endpoint`：阿里云接口节点，有上海`shanghai`、北京`beijing `、深圳`shenzhen`三个节点，自行修改即可。
+- `alibaba_endpoint`：阿里云接口节点，有上海`shanghai`、北京`beijing`、深圳`shenzhen`三个节点，自行修改即可。
 
 ## config_soVits
 
