@@ -14,5 +14,7 @@
     "like_total": "本次直播点赞数量超过 {limit_num} 次，达到 {click_count} 次"
   },
   "like_nums": [66, 188, 300, 500, 666, 888, 999, 1666],
-  "max_next_interval": 100
+  "max_next_interval": 100,
+  "black_user": ["屏蔽用户1", "屏蔽用户2"],
+  "black_text": ["屏蔽词1", "屏蔽词2"]
 }
