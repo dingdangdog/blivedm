@@ -168,7 +168,7 @@ class MyHandler(blivedm.BaseHandler):  # 类变量，将被所有类的实例共
         except (ValueError, TypeError):
             msg = msg
         finally:
-            if (len(VOICE_TEXT["enter"]) > 0):
+            if (len(VOICE_TEXT["danmaku"]) > 0):
                 isBlackText = False
                 blackText = ""
                 for word in BLACK_TEXT:
